@@ -10,11 +10,14 @@ enquanto o americano utiliza dados diversos da internet (web).
 
 doc = nlp(text.strip())
 
+print("="*20, "tokens", "="*20)
 # print tokens
 print([token.text for token in doc])
 
+print("="*20, "sentences", "="*20)
 # print sentences
 print([sent for sent in doc.sents])
 
+print("="*20, "token, gramatical class, syntatic dep", "="*20)
 # print token, gramatical class, syntatic dep
 print ([(token.text, token.pos_, token.dep_) for token in doc])
