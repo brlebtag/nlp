@@ -32,7 +32,7 @@ nlp = spacy.load("pt_core_news_sm")
 def spacy_tokenizer(doc):
     return [t.text for t in nlp(doc) if not t.is_punct]
 
-vectorizer = CountVectorizer(tokenizer=spacy_tokenizer, lowercase=False, binary=True)
+vectorizer = CountVectorizer(tokenizer=spacy_tokenizer, token_pattern=None, lowercase=False, binary=True)
 bow = vectorizer.fit_transform(corpus)
 print(vectorizer.get_feature_names_out())
 print("="*20)
@@ -67,7 +67,7 @@ print(cosine_similarity(bow))
 
 # 1-gram and 2-gram
 print("="*50)
-vectorizer = CountVectorizer(tokenizer=spacy_tokenizer, lowercase=False, binary=True, ngram_range=(1, 2))
+vectorizer = CountVectorizer(tokenizer=spacy_tokenizer, token_pattern=None, lowercase=False, binary=True, ngram_range=(1, 2))
 bigrams = vectorizer.fit_transform(corpus)
 print(vectorizer.get_feature_names_out())
 print("Number of features: {}".format(len(vectorizer.get_feature_names_out())))
@@ -75,7 +75,7 @@ print(vectorizer.vocabulary_)
 
 # 2-grams only
 print("="*50)
-vectorizer = CountVectorizer(tokenizer=spacy_tokenizer, lowercase=False, binary=True, ngram_range=(2, 2))
+vectorizer = CountVectorizer(tokenizer=spacy_tokenizer, token_pattern=None, lowercase=False, binary=True, ngram_range=(2, 2))
 bigrams = vectorizer.fit_transform(corpus)
 print(vectorizer.get_feature_names_out())
 print("Number of features: {}".format(len(vectorizer.get_feature_names_out())))
